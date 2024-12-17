@@ -8,8 +8,8 @@ import dynamic from "next/dynamic";
 
 const ContactPage = () => {
 
-  const a=Math.random();
-  console.log(a);
+  // const a=Math.random();
+  // console.log(a);
 
   return (
     <div className={styles.container}>
@@ -18,7 +18,7 @@ const ContactPage = () => {
       </div>
       <div className={styles.formContainer}>
         {/* <HydrationTestNoSSR/> */}
-        <div suppressHydrationWarning>{a}</div>
+        {/* <div suppressHydrationWarning>{a}</div> */}
         <form action="" className={styles.form}>
           <input type="text" placeholder="Name and Surname" />
           <input type="text" placeholder="Email Address" />
