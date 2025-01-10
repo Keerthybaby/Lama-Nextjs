@@ -1,10 +1,14 @@
-"use client";
+
 import React from "react";
 import styles from "./contact.module.css";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 // import HydrationTest from "@/components/hydrationTest";
 // const HydrationTestNoSSR = dynamic(()=>import("@/components/hydrationTest"),{ssr:false})
+export const metadata = {
+  title: "Contact Page ",
+  description: "Contact description",
+};
 
 const ContactPage = () => {
 
