@@ -8,12 +8,12 @@ const postCard = ({post}) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
-          <Image
-            src="https://images.pexels.com/photos/17410391/pexels-photo-17410391/free-photo-of-tourist-boat-on-the-river.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          {post.img && <Image
+            src={post.img}
             alt=""
             fill
             className={styles.img}
-          />
+          />}
         </div>
         <span className={styles.date}>01.01.2024</span>
       </div>
@@ -22,7 +22,7 @@ const postCard = ({post}) => {
         <p className={styles.desc}>
           {post.body}
         </p>
-        <Link className={styles.link} href={`/blog/${post.id}`}>
+        <Link className={styles.link} href={`/blog/${post.slug}`}>
           READ MORE
         </Link>
       </div>
