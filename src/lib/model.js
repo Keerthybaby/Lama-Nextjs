@@ -18,8 +18,8 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
-      min: 6,
+    
+      
     },
     img: {
       type: String,
@@ -46,9 +46,9 @@ const postSchema = new mongoose.Schema(
     img: {
       type: String,
     },
-    userId:{
-      type:String,
-      required:true,
+    userId: {
+      type: String,
+      required: true,
     },
     slug: {
       type: String,
@@ -60,5 +60,5 @@ const postSchema = new mongoose.Schema(
 );
 
 // Export the models
-export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Post = mongoose.models.Post || mongoose.model("Post", postSchema);
+export const User = mongoose.models?.User || mongoose.model("User", userSchema);
+export const Post = mongoose.models?.Post || mongoose.model("Post", postSchema);

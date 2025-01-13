@@ -1,5 +1,8 @@
+import { connect } from "mongoose";
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
+import { connectToDb } from "./utils";
+import { User } from "./model";
 export const {
   handlers: { GET, POST },
   auth,
@@ -12,10 +15,28 @@ export const {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-  // callbacks: {
-  //   async signIn(user, account, profile) {
-  //     console.log(user, account, profile);
-  //     return true;
-  //   },
-  // },
+  callbacks: {
+    async signIn({ user, account, profile }) {
+      console.log(profile);
+      if (account.provider === "github") {
+        connectToDb();
+        try {
+          const user = await User.findOne({ email: profile.email });
+          if (!user) {
+            const newUser = new User({
+              username: profile.login,
+              email: profile.email,
+              image: profile.avatar_url,
+            });
+
+            await newUser.save();
+          }
+        } catch (err) {
+          console.log(err);
+          return false;
+        }
+      }
+      return true;
+    },
+  },
 });
