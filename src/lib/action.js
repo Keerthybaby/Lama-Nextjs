@@ -103,6 +103,6 @@ export const login = async (prevState, formData) => {
     if (err.type === "CredentialsSignin")  {
       return { error: "Invalid username or password" };
     }
-    return { error: "Something went wrong" };
+   throw err;
   }
 };
