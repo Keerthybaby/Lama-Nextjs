@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Creqtive Thoughts Agency.</h1>
+        <h1 className={styles.title}>Creative Thoughts Agency.</h1>
         <p className={styles.desc}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est,
           optio dolorem labore saepe laborum nesciunt ratione recusandae
