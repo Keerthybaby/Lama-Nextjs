@@ -12,7 +12,7 @@ export const addPost = async (prevState,formData) => {
   // const desc = formData.get("desc");
   // const slug = formData.get("slug");
 
-  const { title, desc, slug, userId } = Object.fromEntries(formData);
+  const { title, desc, slug,img, userId } = Object.fromEntries(formData);
 
   try {
     connectToDb();
@@ -20,6 +20,7 @@ export const addPost = async (prevState,formData) => {
       title,
       desc,
       slug,
+      img,
       userId,
     });
 
@@ -52,13 +53,25 @@ export const deletePost = async (formData) => {
 export const addUser = async (prevState,formData) => {
 
 
-  const { username,email,password,img } = Object.fromEntries(formData);
+  const { username,email,password,img,isAdmin } = Object.fromEntries(formData);
 
   try {
     connectToDb();
+
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = new User({
-      username,email,password,img
+      username,
+      email,
+      password: hashedPassword,
+      img,
+      isAdmin,
     });
+    
+    // const newUser = new User({
+    //   username,email,password,img
+    // });
 
     await newUser.save();
     console.log("Saved to db");
