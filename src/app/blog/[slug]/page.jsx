@@ -38,7 +38,7 @@ const SinglePostPage = async ({ params }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        <Image src={post.img} alt="" fill className={styles.img} />
+        <Image src={post.img} alt="" fill className={styles.img} unoptimized />
       </div>
 
       <div className={styles.textContainer}>
@@ -52,7 +52,12 @@ const SinglePostPage = async ({ params }) => {
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>
-              {post.createdAt.toString().slice(4, 16)}
+              {/* {post.createdAt.toString().slice(4, 16)} */}
+            {new Date(post.createdAt).toLocaleDateString("en-US",{
+              year:"numeric",
+              month:"long",
+              day:"numeric"
+            })}
             </span>
           </div>
         </div>

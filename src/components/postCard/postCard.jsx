@@ -13,9 +13,18 @@ const postCard = ({post}) => {
             alt=""
             fill
             className={styles.img}
+            unoptimized
           />}
         </div>
-        <span className={styles.date}>01.01.2024</span>
+        <span className={styles.date}>
+          {/* 01.01.2024 */}
+          {new Date(post.createdAt).toLocaleDateString("en-GB",{
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric",
+          }).replace(/\//g,".")}
+
+          </span>
       </div>
       <div className={styles.bottom}>
         <h1 className={styles.title}>{post.title}</h1>

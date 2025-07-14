@@ -32,7 +32,7 @@ const AdminUserForm = () => {
         <img src={previewImg} alt="Preview" className={styles.previewImg} />
       )} */}
       <select name="isAdmin">
-        {/* <option value="false">IsAdmin</option> */}
+        <option value="false">IsAdmin</option>
         <option value="false">No</option>
         <option value="true">Yes</option>
       </select>
